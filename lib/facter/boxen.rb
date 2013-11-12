@@ -11,6 +11,8 @@ facts["github_email"]  = config.email
 facts["github_name"]   = config.name
 facts["github_token"]  = config.token
 
+facts["boxen_configured"]  = true
+
 facts["boxen_home"]     = config.homedir
 facts["boxen_srcdir"]   = config.srcdir
 facts["boxen_repodir"]  = config.repodir
