@@ -53,6 +53,7 @@ end
 
 facts.each do |k, v|
   unless Facter.value(k)
+    puts "adding key: #{k} value: #{v}"
     Facter.add(k) { setcode { v } }
   end
 end
