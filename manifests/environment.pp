@@ -20,7 +20,8 @@ class boxen::environment(
   include boxen::security
   include boxen::sudoers
 
-  include_projects_from_boxen_cli()
+  #TODO: determine if this needs to be added back
+  #include_projects_from_boxen_cli()
 
   $relative_bin_on_path_ensure = $relative_bin_on_path ? {
     true    => present,
