@@ -11,8 +11,6 @@ facts["github_email"]  = config.email
 facts["github_name"]   = config.name
 facts["github_token"]  = config.token
 
-facts["boxen_configured"]  = true
-
 facts["boxen_home"]     = config.homedir
 facts["boxen_srcdir"]   = config.srcdir
 facts["boxen_repodir"]  = config.repodir
@@ -20,6 +18,12 @@ facts["boxen_reponame"] = config.reponame
 facts["boxen_user"]     = config.user
 facts["luser"]          = config.user # this is goin' away
 
+if File.file?('/opt/boxen/config/boxen/defaults.json')
+  facts["boxen_configured"]  = true
+  puts "INFO - Found boxen config file"
+else
+  puts "INFO - No boxen config file found"
+end
 Dir["#{config.homedir}/config/facts/*.json"].each do |file|
   facts.merge! JSON.parse File.read file
 end
