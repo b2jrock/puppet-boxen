@@ -18,6 +18,13 @@ facts["boxen_reponame"] = config.reponame
 facts["boxen_user"]     = config.user
 facts["luser"]          = config.user # this is goin' away
 
+if File.file?('/opt/boxen/config/boxen/defaults.json')
+  facts["boxen_configured"]  = true
+  puts "INFO - Found boxen config file"
+else
+  puts "INFO - No boxen config file found"
+end
+
 Dir["#{config.homedir}/config/facts/*.json"].each do |file|
   facts.merge! JSON.parse File.read file
 end
