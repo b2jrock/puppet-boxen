@@ -42,7 +42,7 @@ define boxen::osx_defaults(
       } else {
         $checkvalue = $value
       }
-      exec { "osx_defaults write ${host} ${domain}:${key}=>${value}":
+      exec { "osx_defaults write ${host} ${domain}:${key}=>${value} ${user}":
         command => $cmd,
         unless  => "${defaults_cmd}${host_option} read ${domain} '${key}' && (${defaults_cmd}${host_option} read ${domain} '${key}' | awk '{ exit \$0 != \"${checkvalue}\" }')",
         user    => $user
